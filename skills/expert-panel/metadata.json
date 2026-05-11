@@ -1,0 +1,6 @@
+{
+  "version": "1.0.0",
+  "organization": "Decision & Review",
+  "date": "May 2026",
+  "abstract": "Routes proposals to skill or agent workflow, runs 4 adversarial experts across independent axes, and produces a decision dossier — not a verdict."
+}
