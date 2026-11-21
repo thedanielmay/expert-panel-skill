@@ -8,7 +8,6 @@ A Claude Code skill that subjects any proposal to structured adversarial review 
 
 The core principle: the goal is not consensus. An unresolved objection at the end is a valuable output. A verdict of "this cannot be salvaged in its current form" must be reachable.
 
-**Version:** 1.0.0 (May 2026)  
 **Category:** Decision & Review
 
 ---
@@ -105,14 +104,19 @@ The root `SKILL.md` and `skills/expert-panel/SKILL.md` are identical — the roo
 
 ---
 
-## Installation
+## Install
 
-Install via the Claude Code skill registry or by dropping the skill file into your Claude Code skills directory. The skill name is `expert-panel`.
+Install as a plugin:
 
-> Exact installation steps depend on your Claude Code version and skill-loading configuration.
+```
+/plugin install expert-panel --marketplace thedanielmay/expert-panel-skill
+```
 
----
+Or link the folder into your skills directory:
 
-## Status
+```
+ln -s /path/to/expert-panel-skill/skills/expert-panel ~/.claude/skills/expert-panel
+```
 
-**v1.0.0** — Initial publish. Single commit. No open issues or PRs at time of writing.
+
+See [CHANGELOG.md](CHANGELOG.md) for the version history.

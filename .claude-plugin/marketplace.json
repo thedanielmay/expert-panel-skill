@@ -1,0 +1,14 @@
+{
+  "name": "expert-panel",
+  "owner": {
+    "name": "Daniel May",
+    "url": "https://github.com/thedanielmay"
+  },
+  "plugins": [
+    {
+      "name": "expert-panel",
+      "source": "./",
+      "description": "Adversarial expert panel review: profiles the proposal, routes to skill or agent workflow, runs 4 independent experts across adversarial axes, and produces a decision dossier with must-fix, should-fix, unresolved objections, cross-panel tensions, and a steel-manned alternative."
+    }
+  ]
+}
