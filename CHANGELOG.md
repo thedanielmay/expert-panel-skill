@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.1.1 - 2026-11-23
+
+- Marketplace file gains a description, so the full check passes again (thedanielmay/agent-tools#10).
+
 ## 1.1.0 - 2026-11-22
 
 - Added skill review mode. Say "review this skill" or pass `--skill-review <path>` to review an agent skill with a fact pass, an optional field knowledge search, two or three critics and a verified dossier.
