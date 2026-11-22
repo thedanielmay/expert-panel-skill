@@ -1,0 +1,17 @@
+{
+  "skill_name": "expert-panel",
+  "evals": [
+    {
+      "id": 1,
+      "name": "skill-review-planted-faults",
+      "prompt": "Run a skill review on the skill at <WORK>/planted-skill. Do not file anything.",
+      "expected_output": "A dossier whose must-fix and should-fix sections find at least 4 of the 5 faults in evals/answer-key.json (a contradiction, a broken command, a missing rule a field expert knows, a body over the length limit, an owner-specific path), with no invented must-fix. Score it with: python3 evals/score.py <dossier> .",
+      "files": ["evals/fixtures/planted-skill/SKILL.md"],
+      "assertions": [
+        "python3 evals/score.py exits 0 on the dossier",
+        "verified.md exists, so every must-fix was marked held or dropped with a command",
+        "nothing was filed and the fixture was not edited"
+      ]
+    }
+  ]
+}
