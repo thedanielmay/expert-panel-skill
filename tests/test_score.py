@@ -41,6 +41,16 @@ class TestScore(unittest.TestCase):
         ok = DOSSIER.replace("4. A made-up fault about colours. Where: SKILL.md:300.\n", "")
         self.assertEqual(score(ok).returncode, 0)  # 4 of 5, none invented
 
+    def test_indented_sub_lines_belong_to_their_item(self):
+        # the mode asks for each must-fix to carry its command and result on indented sub-lines
+        text = ("## Must-fix\n1. The git command fails. SKILL.md:18\n   - Command: `git log --since-tag=v1.2.0`. Result: fatal.\n"
+                "2. Home path. SKILL.md:40\n   - Command: `test -e /Users/alex/x`. Result: missing.\n"
+                "3. Tense conflict. SKILL.md:33 and SKILL.md:48\n  - Command: `sed -n 33p SKILL.md`.\n"
+                "4. No breaking changes rule. SKILL.md:25\n## Should-fix\n- Body over the length limit: 524 lines.\n")
+        r = score(text)
+        self.assertIn("invented must-fix: 0", r.stdout)
+        self.assertEqual(r.returncode, 0)
+
     def test_three_found_fails(self):
         r = score("## Must-fix\n1. The git command fails. SKILL.md:18\n## Should-fix\n- Path. SKILL.md:40\n- Tense. SKILL.md:33\n")
         self.assertEqual(r.returncode, 1)

@@ -33,7 +33,7 @@ def hits(fault, text, tol):
 def items(body):
     out = []
     for line in body.splitlines():
-        if re.match(r"\s{0,3}(?:[-*]|\d+[.)])\s", line):
+        if re.match(r"(?:[-*]|\d+[.)])\s", line):  # a finding starts at the margin; indented lines belong to the one above
             out.append(line)
         elif out and line.strip():
             out[-1] += " " + line.strip()
