@@ -59,6 +59,13 @@ class TestExtract(Base):
         self.assertNotEqual(r.returncode, 0)
         self.assertIn("critic-field.md:2", r.stderr)
 
+    def test_rerun_takes_a_raised_severity(self):
+        # a critic who raises a should-fix to must-fix makes it a must-fix on re-extract
+        self.extract()
+        (self.work / "critic-field.md").write_text(CRITIC_A.replace("\n2 |", "\n5 |", 1))
+        self.extract()
+        self.assertEqual(sorted(c["severity"] for c in self.claims()), [4, 4, 5, 5])
+
     def test_rerun_keeps_marks(self):
         self.extract()
         cid = self.must_ids()[0]
@@ -103,6 +110,14 @@ class TestMark(Base):
         r = run(self.work, self.repo, "mark", "c999", "held", "--cmd", "true")
         self.assertNotEqual(r.returncode, 0)
         self.assertIn("c999", r.stderr)
+
+
+class TestDossierNoExtract(Base):
+    def test_refuses_when_extract_never_ran(self):
+        r = run(self.work, self.repo, "dossier")
+        self.assertEqual(r.returncode, 2)
+        self.assertIn("extract", r.stderr)
+        self.assertFalse((self.work / "verified.md").exists())
 
 
 class TestDossier(Base):

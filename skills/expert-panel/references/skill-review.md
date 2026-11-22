@@ -1,6 +1,6 @@
 # Skill review mode
 
-Use this mode to review one agent skill. It is unrelated to the SKILL workflow in SKILL.md (the sequential rounds). Skip Stage 1 and Stage 2 of SKILL.md. The critics are always parallel subagents.
+Use this mode to review one agent skill. It does not use the SKILL workflow (the sequential rounds in SKILL.md). Skip Stage 1 and Stage 2 of SKILL.md. The critics are always parallel subagents.
 
 ## Invoke
 

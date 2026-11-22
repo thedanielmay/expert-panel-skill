@@ -50,6 +50,7 @@ def extract(work):
                 c = {"id": f"c{nxt}", "severity": int(parts[0]), "loc": parts[1], "claim": parts[2],
                      "status": "unmarked", "cmd": "", "note": ""}
                 nxt += 1
+            c["severity"] = int(parts[0])  # the critic file is the source of truth for severity
             c["source"] = f.name
             out.append(c)
     save(work, out)
@@ -96,6 +97,8 @@ def mark(work, cid, status, run, note):
 
 def dossier(work):
     claims = load(work)
+    if not (work / "claims.json").exists():
+        die("refusing: no claims.json; run extract first", 2)
     open_ids = [c["id"] for c in must(claims) if c["status"] == "unmarked"]
     if open_ids:
         die("refusing: must-fix claims still unmarked: " + ", ".join(open_ids), 2)
