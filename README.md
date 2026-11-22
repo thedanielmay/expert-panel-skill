@@ -90,6 +90,32 @@ The dossier explicitly excludes: per-expert approval verdicts, satisfaction tick
 
 ---
 
+## Skill review mode
+
+Review an agent skill, not a proposal. Say "review this skill" or "skill review", or pass `--skill-review <path>` where the path is a skill repo or the folder holding `SKILL.md`.
+
+| Flag | Effect |
+|------|--------|
+| `--skill-review <path>` | Run the skill review mode. Wins over every other flag |
+| `--no-field-knowledge` | Skip the outside-skill search |
+| `--file` | After the dossier, file the findings the owner picks as GitHub issues |
+
+| Stage | What happens |
+|-------|--------------|
+| 1. Fact pass | A Sonnet subagent measures the skill: size, references, broken commands, personal text |
+| 2. Field knowledge | Finds and vets up to two reputable outside skills on the subject |
+| 3. Critics | Opus critics in parallel: the field expert, the case against, and the skill author for a marketplace skill or one over 500 lines |
+| 4. Claims | `scripts/claims.py` lists each must-fix; the orchestrator checks it and marks it held or dropped with the command run |
+| 5. Synthesis | The dossier takes must-fix items from the verified claims only |
+| 6. Filing | Only on request, one issue per finding the owner picks |
+
+- Outside skills are read as data from a throwaway copy. They are never installed, linked or run.
+- The dossier cannot be written while a must-fix is unmarked. The script proves a command was recorded, not that it was a good test.
+- Cost: about 320,000 tokens per skill.
+- Eval: `evals/` holds a made-up skill with five planted faults and a scorer. See `evals/README.md`. Run the tests with `python3 -m unittest discover -s tests`.
+
+---
+
 ## What's Inside
 
 ```
@@ -97,6 +123,10 @@ skills/
   expert-panel/
     SKILL.md                    # Canonical skill implementation
     metadata.json               # Version, category, abstract
+    references/                 # Skill review mode and its critic briefs
+    scripts/claims.py           # Claims file for skill review
+evals/                          # Planted-fault eval and scorer
+tests/                          # Unit tests
 ```
 
 The skill lives only in `skills/expert-panel/SKILL.md`.

@@ -1,0 +1,17 @@
+{
+  "fixture": "fixtures/planted-skill/SKILL.md",
+  "tolerance_lines": 3,
+  "faults": [
+    {"id": "contradiction", "kind": "contradiction", "lines": [33, 48], "phrases": [],
+     "why": "Line 33 orders the past tense for every note, line 48 orders the imperative mood for every note."},
+    {"id": "broken-command", "kind": "broken command", "lines": [18], "phrases": [],
+     "why": "git log has no --since-tag option, so the command fails with 'unrecognized argument'."},
+    {"id": "missing-rule", "kind": "missing rule a field expert knows", "lines": [],
+     "phrases": ["breaking change", "breaking-change", "backward-incompatible", "backwards-incompatible", "upgrade note", "migration note"],
+     "why": "Release notes must call out breaking changes and upgrade steps. The skill never mentions them, so there is no line to cite."},
+    {"id": "over-length", "kind": "body over the length limit", "lines": [], "phrases": ["500 lines", "500-line", "length limit", "over the limit"],
+     "why": "The file is 524 lines, over the 500-line limit. The tail is 470 low-value sample entries."},
+    {"id": "owner-path", "kind": "owner-specific path", "lines": [40], "phrases": [],
+     "why": "Line 40 saves to a home folder of one person (/Users/alex/...) in a skill meant for a marketplace."}
+  ]
+}

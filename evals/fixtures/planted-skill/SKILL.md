@@ -1,0 +1,524 @@
+---
+name: release-notes
+description: Use when the user asks to write, draft or tidy release notes or a changelog entry for a software release.
+license: MIT
+metadata:
+  version: "1.0.0"
+---
+
+# Release Notes
+
+Turn a list of code changes into release notes that a user of the software can read in under a minute.
+
+## Collect the changes
+
+List the commits since the last release:
+
+```
+git log --since-tag=v1.2.0 --oneline
+```
+
+Read each commit message. Skip commits that only touch tests, CI or formatting.
+
+## Group the changes
+
+Put each change under one heading: Added, Changed, Fixed or Removed.
+
+- Keep one line per change.
+- Name the feature, not the file.
+- Link the issue number when there is one.
+
+## Style
+
+- Write every note in the past tense ("Fixed the login crash").
+- Use plain words. Say "sign in", not "authenticate".
+- Put the newest release at the top of the file.
+- Leave out commit hashes.
+
+## Save the draft
+
+Save the draft to `/Users/alex/release-drafts/NEXT.md`, then show it to the user for review.
+
+## Checklist
+
+Before you hand the draft over, check each item:
+
+- Every heading has at least one line, or is removed.
+- Every issue number links to the right issue.
+- Write every note in the imperative mood ("Fix the login crash").
+- The version number and date sit in the top heading.
+
+## Appendix: sample entries
+
+Use these entries as a guide to length and tone.
+
+- 1.78.1: Added a filter to the settings list.
+- 1.78.0: Fixed a crash when opening the login page.
+- 1.77.5: Fixed a typo in the sync help text.
+- 1.77.4: Added keyboard shortcuts to export.
+- 1.77.3: Fixed wrong totals on the dashboard screen.
+- 1.77.2: Changed the billing page to load faster.
+- 1.77.1: Added a filter to the profile list.
+- 1.77.0: Fixed a crash when opening the reports page.
+- 1.76.5: Fixed a typo in the search help text.
+- 1.76.4: Added keyboard shortcuts to upload.
+- 1.76.3: Fixed wrong totals on the import screen.
+- 1.76.2: Changed the notifications page to load faster.
+- 1.76.1: Added a filter to the settings list.
+- 1.76.0: Fixed a crash when opening the login page.
+- 1.75.5: Fixed a typo in the sync help text.
+- 1.75.4: Added keyboard shortcuts to export.
+- 1.75.3: Fixed wrong totals on the dashboard screen.
+- 1.75.2: Changed the billing page to load faster.
+- 1.75.1: Added a filter to the profile list.
+- 1.75.0: Fixed a crash when opening the reports page.
+- 1.74.5: Fixed a typo in the search help text.
+- 1.74.4: Added keyboard shortcuts to upload.
+- 1.74.3: Fixed wrong totals on the import screen.
+- 1.74.2: Changed the notifications page to load faster.
+- 1.74.1: Added a filter to the settings list.
+- 1.74.0: Fixed a crash when opening the login page.
+- 1.73.5: Fixed a typo in the sync help text.
+- 1.73.4: Added keyboard shortcuts to export.
+- 1.73.3: Fixed wrong totals on the dashboard screen.
+- 1.73.2: Changed the billing page to load faster.
+- 1.73.1: Added a filter to the profile list.
+- 1.73.0: Fixed a crash when opening the reports page.
+- 1.72.5: Fixed a typo in the search help text.
+- 1.72.4: Added keyboard shortcuts to upload.
+- 1.72.3: Fixed wrong totals on the import screen.
+- 1.72.2: Changed the notifications page to load faster.
+- 1.72.1: Added a filter to the settings list.
+- 1.72.0: Fixed a crash when opening the login page.
+- 1.71.5: Fixed a typo in the sync help text.
+- 1.71.4: Added keyboard shortcuts to export.
+- 1.71.3: Fixed wrong totals on the dashboard screen.
+- 1.71.2: Changed the billing page to load faster.
+- 1.71.1: Added a filter to the profile list.
+- 1.71.0: Fixed a crash when opening the reports page.
+- 1.70.5: Fixed a typo in the search help text.
+- 1.70.4: Added keyboard shortcuts to upload.
+- 1.70.3: Fixed wrong totals on the import screen.
+- 1.70.2: Changed the notifications page to load faster.
+- 1.70.1: Added a filter to the settings list.
+- 1.70.0: Fixed a crash when opening the login page.
+- 1.69.5: Fixed a typo in the sync help text.
+- 1.69.4: Added keyboard shortcuts to export.
+- 1.69.3: Fixed wrong totals on the dashboard screen.
+- 1.69.2: Changed the billing page to load faster.
+- 1.69.1: Added a filter to the profile list.
+- 1.69.0: Fixed a crash when opening the reports page.
+- 1.68.5: Fixed a typo in the search help text.
+- 1.68.4: Added keyboard shortcuts to upload.
+- 1.68.3: Fixed wrong totals on the import screen.
+- 1.68.2: Changed the notifications page to load faster.
+- 1.68.1: Added a filter to the settings list.
+- 1.68.0: Fixed a crash when opening the login page.
+- 1.67.5: Fixed a typo in the sync help text.
+- 1.67.4: Added keyboard shortcuts to export.
+- 1.67.3: Fixed wrong totals on the dashboard screen.
+- 1.67.2: Changed the billing page to load faster.
+- 1.67.1: Added a filter to the profile list.
+- 1.67.0: Fixed a crash when opening the reports page.
+- 1.66.5: Fixed a typo in the search help text.
+- 1.66.4: Added keyboard shortcuts to upload.
+- 1.66.3: Fixed wrong totals on the import screen.
+- 1.66.2: Changed the notifications page to load faster.
+- 1.66.1: Added a filter to the settings list.
+- 1.66.0: Fixed a crash when opening the login page.
+- 1.65.5: Fixed a typo in the sync help text.
+- 1.65.4: Added keyboard shortcuts to export.
+- 1.65.3: Fixed wrong totals on the dashboard screen.
+- 1.65.2: Changed the billing page to load faster.
+- 1.65.1: Added a filter to the profile list.
+- 1.65.0: Fixed a crash when opening the reports page.
+- 1.64.5: Fixed a typo in the search help text.
+- 1.64.4: Added keyboard shortcuts to upload.
+- 1.64.3: Fixed wrong totals on the import screen.
+- 1.64.2: Changed the notifications page to load faster.
+- 1.64.1: Added a filter to the settings list.
+- 1.64.0: Fixed a crash when opening the login page.
+- 1.63.5: Fixed a typo in the sync help text.
+- 1.63.4: Added keyboard shortcuts to export.
+- 1.63.3: Fixed wrong totals on the dashboard screen.
+- 1.63.2: Changed the billing page to load faster.
+- 1.63.1: Added a filter to the profile list.
+- 1.63.0: Fixed a crash when opening the reports page.
+- 1.62.5: Fixed a typo in the search help text.
+- 1.62.4: Added keyboard shortcuts to upload.
+- 1.62.3: Fixed wrong totals on the import screen.
+- 1.62.2: Changed the notifications page to load faster.
+- 1.62.1: Added a filter to the settings list.
+- 1.62.0: Fixed a crash when opening the login page.
+- 1.61.5: Fixed a typo in the sync help text.
+- 1.61.4: Added keyboard shortcuts to export.
+- 1.61.3: Fixed wrong totals on the dashboard screen.
+- 1.61.2: Changed the billing page to load faster.
+- 1.61.1: Added a filter to the profile list.
+- 1.61.0: Fixed a crash when opening the reports page.
+- 1.60.5: Fixed a typo in the search help text.
+- 1.60.4: Added keyboard shortcuts to upload.
+- 1.60.3: Fixed wrong totals on the import screen.
+- 1.60.2: Changed the notifications page to load faster.
+- 1.60.1: Added a filter to the settings list.
+- 1.60.0: Fixed a crash when opening the login page.
+- 1.59.5: Fixed a typo in the sync help text.
+- 1.59.4: Added keyboard shortcuts to export.
+- 1.59.3: Fixed wrong totals on the dashboard screen.
+- 1.59.2: Changed the billing page to load faster.
+- 1.59.1: Added a filter to the profile list.
+- 1.59.0: Fixed a crash when opening the reports page.
+- 1.58.5: Fixed a typo in the search help text.
+- 1.58.4: Added keyboard shortcuts to upload.
+- 1.58.3: Fixed wrong totals on the import screen.
+- 1.58.2: Changed the notifications page to load faster.
+- 1.58.1: Added a filter to the settings list.
+- 1.58.0: Fixed a crash when opening the login page.
+- 1.57.5: Fixed a typo in the sync help text.
+- 1.57.4: Added keyboard shortcuts to export.
+- 1.57.3: Fixed wrong totals on the dashboard screen.
+- 1.57.2: Changed the billing page to load faster.
+- 1.57.1: Added a filter to the profile list.
+- 1.57.0: Fixed a crash when opening the reports page.
+- 1.56.5: Fixed a typo in the search help text.
+- 1.56.4: Added keyboard shortcuts to upload.
+- 1.56.3: Fixed wrong totals on the import screen.
+- 1.56.2: Changed the notifications page to load faster.
+- 1.56.1: Added a filter to the settings list.
+- 1.56.0: Fixed a crash when opening the login page.
+- 1.55.5: Fixed a typo in the sync help text.
+- 1.55.4: Added keyboard shortcuts to export.
+- 1.55.3: Fixed wrong totals on the dashboard screen.
+- 1.55.2: Changed the billing page to load faster.
+- 1.55.1: Added a filter to the profile list.
+- 1.55.0: Fixed a crash when opening the reports page.
+- 1.54.5: Fixed a typo in the search help text.
+- 1.54.4: Added keyboard shortcuts to upload.
+- 1.54.3: Fixed wrong totals on the import screen.
+- 1.54.2: Changed the notifications page to load faster.
+- 1.54.1: Added a filter to the settings list.
+- 1.54.0: Fixed a crash when opening the login page.
+- 1.53.5: Fixed a typo in the sync help text.
+- 1.53.4: Added keyboard shortcuts to export.
+- 1.53.3: Fixed wrong totals on the dashboard screen.
+- 1.53.2: Changed the billing page to load faster.
+- 1.53.1: Added a filter to the profile list.
+- 1.53.0: Fixed a crash when opening the reports page.
+- 1.52.5: Fixed a typo in the search help text.
+- 1.52.4: Added keyboard shortcuts to upload.
+- 1.52.3: Fixed wrong totals on the import screen.
+- 1.52.2: Changed the notifications page to load faster.
+- 1.52.1: Added a filter to the settings list.
+- 1.52.0: Fixed a crash when opening the login page.
+- 1.51.5: Fixed a typo in the sync help text.
+- 1.51.4: Added keyboard shortcuts to export.
+- 1.51.3: Fixed wrong totals on the dashboard screen.
+- 1.51.2: Changed the billing page to load faster.
+- 1.51.1: Added a filter to the profile list.
+- 1.51.0: Fixed a crash when opening the reports page.
+- 1.50.5: Fixed a typo in the search help text.
+- 1.50.4: Added keyboard shortcuts to upload.
+- 1.50.3: Fixed wrong totals on the import screen.
+- 1.50.2: Changed the notifications page to load faster.
+- 1.50.1: Added a filter to the settings list.
+- 1.50.0: Fixed a crash when opening the login page.
+- 1.49.5: Fixed a typo in the sync help text.
+- 1.49.4: Added keyboard shortcuts to export.
+- 1.49.3: Fixed wrong totals on the dashboard screen.
+- 1.49.2: Changed the billing page to load faster.
+- 1.49.1: Added a filter to the profile list.
+- 1.49.0: Fixed a crash when opening the reports page.
+- 1.48.5: Fixed a typo in the search help text.
+- 1.48.4: Added keyboard shortcuts to upload.
+- 1.48.3: Fixed wrong totals on the import screen.
+- 1.48.2: Changed the notifications page to load faster.
+- 1.48.1: Added a filter to the settings list.
+- 1.48.0: Fixed a crash when opening the login page.
+- 1.47.5: Fixed a typo in the sync help text.
+- 1.47.4: Added keyboard shortcuts to export.
+- 1.47.3: Fixed wrong totals on the dashboard screen.
+- 1.47.2: Changed the billing page to load faster.
+- 1.47.1: Added a filter to the profile list.
+- 1.47.0: Fixed a crash when opening the reports page.
+- 1.46.5: Fixed a typo in the search help text.
+- 1.46.4: Added keyboard shortcuts to upload.
+- 1.46.3: Fixed wrong totals on the import screen.
+- 1.46.2: Changed the notifications page to load faster.
+- 1.46.1: Added a filter to the settings list.
+- 1.46.0: Fixed a crash when opening the login page.
+- 1.45.5: Fixed a typo in the sync help text.
+- 1.45.4: Added keyboard shortcuts to export.
+- 1.45.3: Fixed wrong totals on the dashboard screen.
+- 1.45.2: Changed the billing page to load faster.
+- 1.45.1: Added a filter to the profile list.
+- 1.45.0: Fixed a crash when opening the reports page.
+- 1.44.5: Fixed a typo in the search help text.
+- 1.44.4: Added keyboard shortcuts to upload.
+- 1.44.3: Fixed wrong totals on the import screen.
+- 1.44.2: Changed the notifications page to load faster.
+- 1.44.1: Added a filter to the settings list.
+- 1.44.0: Fixed a crash when opening the login page.
+- 1.43.5: Fixed a typo in the sync help text.
+- 1.43.4: Added keyboard shortcuts to export.
+- 1.43.3: Fixed wrong totals on the dashboard screen.
+- 1.43.2: Changed the billing page to load faster.
+- 1.43.1: Added a filter to the profile list.
+- 1.43.0: Fixed a crash when opening the reports page.
+- 1.42.5: Fixed a typo in the search help text.
+- 1.42.4: Added keyboard shortcuts to upload.
+- 1.42.3: Fixed wrong totals on the import screen.
+- 1.42.2: Changed the notifications page to load faster.
+- 1.42.1: Added a filter to the settings list.
+- 1.42.0: Fixed a crash when opening the login page.
+- 1.41.5: Fixed a typo in the sync help text.
+- 1.41.4: Added keyboard shortcuts to export.
+- 1.41.3: Fixed wrong totals on the dashboard screen.
+- 1.41.2: Changed the billing page to load faster.
+- 1.41.1: Added a filter to the profile list.
+- 1.41.0: Fixed a crash when opening the reports page.
+- 1.40.5: Fixed a typo in the search help text.
+- 1.40.4: Added keyboard shortcuts to upload.
+- 1.40.3: Fixed wrong totals on the import screen.
+- 1.40.2: Changed the notifications page to load faster.
+- 1.40.1: Added a filter to the settings list.
+- 1.40.0: Fixed a crash when opening the login page.
+- 1.39.5: Fixed a typo in the sync help text.
+- 1.39.4: Added keyboard shortcuts to export.
+- 1.39.3: Fixed wrong totals on the dashboard screen.
+- 1.39.2: Changed the billing page to load faster.
+- 1.39.1: Added a filter to the profile list.
+- 1.39.0: Fixed a crash when opening the reports page.
+- 1.38.5: Fixed a typo in the search help text.
+- 1.38.4: Added keyboard shortcuts to upload.
+- 1.38.3: Fixed wrong totals on the import screen.
+- 1.38.2: Changed the notifications page to load faster.
+- 1.38.1: Added a filter to the settings list.
+- 1.38.0: Fixed a crash when opening the login page.
+- 1.37.5: Fixed a typo in the sync help text.
+- 1.37.4: Added keyboard shortcuts to export.
+- 1.37.3: Fixed wrong totals on the dashboard screen.
+- 1.37.2: Changed the billing page to load faster.
+- 1.37.1: Added a filter to the profile list.
+- 1.37.0: Fixed a crash when opening the reports page.
+- 1.36.5: Fixed a typo in the search help text.
+- 1.36.4: Added keyboard shortcuts to upload.
+- 1.36.3: Fixed wrong totals on the import screen.
+- 1.36.2: Changed the notifications page to load faster.
+- 1.36.1: Added a filter to the settings list.
+- 1.36.0: Fixed a crash when opening the login page.
+- 1.35.5: Fixed a typo in the sync help text.
+- 1.35.4: Added keyboard shortcuts to export.
+- 1.35.3: Fixed wrong totals on the dashboard screen.
+- 1.35.2: Changed the billing page to load faster.
+- 1.35.1: Added a filter to the profile list.
+- 1.35.0: Fixed a crash when opening the reports page.
+- 1.34.5: Fixed a typo in the search help text.
+- 1.34.4: Added keyboard shortcuts to upload.
+- 1.34.3: Fixed wrong totals on the import screen.
+- 1.34.2: Changed the notifications page to load faster.
+- 1.34.1: Added a filter to the settings list.
+- 1.34.0: Fixed a crash when opening the login page.
+- 1.33.5: Fixed a typo in the sync help text.
+- 1.33.4: Added keyboard shortcuts to export.
+- 1.33.3: Fixed wrong totals on the dashboard screen.
+- 1.33.2: Changed the billing page to load faster.
+- 1.33.1: Added a filter to the profile list.
+- 1.33.0: Fixed a crash when opening the reports page.
+- 1.32.5: Fixed a typo in the search help text.
+- 1.32.4: Added keyboard shortcuts to upload.
+- 1.32.3: Fixed wrong totals on the import screen.
+- 1.32.2: Changed the notifications page to load faster.
+- 1.32.1: Added a filter to the settings list.
+- 1.32.0: Fixed a crash when opening the login page.
+- 1.31.5: Fixed a typo in the sync help text.
+- 1.31.4: Added keyboard shortcuts to export.
+- 1.31.3: Fixed wrong totals on the dashboard screen.
+- 1.31.2: Changed the billing page to load faster.
+- 1.31.1: Added a filter to the profile list.
+- 1.31.0: Fixed a crash when opening the reports page.
+- 1.30.5: Fixed a typo in the search help text.
+- 1.30.4: Added keyboard shortcuts to upload.
+- 1.30.3: Fixed wrong totals on the import screen.
+- 1.30.2: Changed the notifications page to load faster.
+- 1.30.1: Added a filter to the settings list.
+- 1.30.0: Fixed a crash when opening the login page.
+- 1.29.5: Fixed a typo in the sync help text.
+- 1.29.4: Added keyboard shortcuts to export.
+- 1.29.3: Fixed wrong totals on the dashboard screen.
+- 1.29.2: Changed the billing page to load faster.
+- 1.29.1: Added a filter to the profile list.
+- 1.29.0: Fixed a crash when opening the reports page.
+- 1.28.5: Fixed a typo in the search help text.
+- 1.28.4: Added keyboard shortcuts to upload.
+- 1.28.3: Fixed wrong totals on the import screen.
+- 1.28.2: Changed the notifications page to load faster.
+- 1.28.1: Added a filter to the settings list.
+- 1.28.0: Fixed a crash when opening the login page.
+- 1.27.5: Fixed a typo in the sync help text.
+- 1.27.4: Added keyboard shortcuts to export.
+- 1.27.3: Fixed wrong totals on the dashboard screen.
+- 1.27.2: Changed the billing page to load faster.
+- 1.27.1: Added a filter to the profile list.
+- 1.27.0: Fixed a crash when opening the reports page.
+- 1.26.5: Fixed a typo in the search help text.
+- 1.26.4: Added keyboard shortcuts to upload.
+- 1.26.3: Fixed wrong totals on the import screen.
+- 1.26.2: Changed the notifications page to load faster.
+- 1.26.1: Added a filter to the settings list.
+- 1.26.0: Fixed a crash when opening the login page.
+- 1.25.5: Fixed a typo in the sync help text.
+- 1.25.4: Added keyboard shortcuts to export.
+- 1.25.3: Fixed wrong totals on the dashboard screen.
+- 1.25.2: Changed the billing page to load faster.
+- 1.25.1: Added a filter to the profile list.
+- 1.25.0: Fixed a crash when opening the reports page.
+- 1.24.5: Fixed a typo in the search help text.
+- 1.24.4: Added keyboard shortcuts to upload.
+- 1.24.3: Fixed wrong totals on the import screen.
+- 1.24.2: Changed the notifications page to load faster.
+- 1.24.1: Added a filter to the settings list.
+- 1.24.0: Fixed a crash when opening the login page.
+- 1.23.5: Fixed a typo in the sync help text.
+- 1.23.4: Added keyboard shortcuts to export.
+- 1.23.3: Fixed wrong totals on the dashboard screen.
+- 1.23.2: Changed the billing page to load faster.
+- 1.23.1: Added a filter to the profile list.
+- 1.23.0: Fixed a crash when opening the reports page.
+- 1.22.5: Fixed a typo in the search help text.
+- 1.22.4: Added keyboard shortcuts to upload.
+- 1.22.3: Fixed wrong totals on the import screen.
+- 1.22.2: Changed the notifications page to load faster.
+- 1.22.1: Added a filter to the settings list.
+- 1.22.0: Fixed a crash when opening the login page.
+- 1.21.5: Fixed a typo in the sync help text.
+- 1.21.4: Added keyboard shortcuts to export.
+- 1.21.3: Fixed wrong totals on the dashboard screen.
+- 1.21.2: Changed the billing page to load faster.
+- 1.21.1: Added a filter to the profile list.
+- 1.21.0: Fixed a crash when opening the reports page.
+- 1.20.5: Fixed a typo in the search help text.
+- 1.20.4: Added keyboard shortcuts to upload.
+- 1.20.3: Fixed wrong totals on the import screen.
+- 1.20.2: Changed the notifications page to load faster.
+- 1.20.1: Added a filter to the settings list.
+- 1.20.0: Fixed a crash when opening the login page.
+- 1.19.5: Fixed a typo in the sync help text.
+- 1.19.4: Added keyboard shortcuts to export.
+- 1.19.3: Fixed wrong totals on the dashboard screen.
+- 1.19.2: Changed the billing page to load faster.
+- 1.19.1: Added a filter to the profile list.
+- 1.19.0: Fixed a crash when opening the reports page.
+- 1.18.5: Fixed a typo in the search help text.
+- 1.18.4: Added keyboard shortcuts to upload.
+- 1.18.3: Fixed wrong totals on the import screen.
+- 1.18.2: Changed the notifications page to load faster.
+- 1.18.1: Added a filter to the settings list.
+- 1.18.0: Fixed a crash when opening the login page.
+- 1.17.5: Fixed a typo in the sync help text.
+- 1.17.4: Added keyboard shortcuts to export.
+- 1.17.3: Fixed wrong totals on the dashboard screen.
+- 1.17.2: Changed the billing page to load faster.
+- 1.17.1: Added a filter to the profile list.
+- 1.17.0: Fixed a crash when opening the reports page.
+- 1.16.5: Fixed a typo in the search help text.
+- 1.16.4: Added keyboard shortcuts to upload.
+- 1.16.3: Fixed wrong totals on the import screen.
+- 1.16.2: Changed the notifications page to load faster.
+- 1.16.1: Added a filter to the settings list.
+- 1.16.0: Fixed a crash when opening the login page.
+- 1.15.5: Fixed a typo in the sync help text.
+- 1.15.4: Added keyboard shortcuts to export.
+- 1.15.3: Fixed wrong totals on the dashboard screen.
+- 1.15.2: Changed the billing page to load faster.
+- 1.15.1: Added a filter to the profile list.
+- 1.15.0: Fixed a crash when opening the reports page.
+- 1.14.5: Fixed a typo in the search help text.
+- 1.14.4: Added keyboard shortcuts to upload.
+- 1.14.3: Fixed wrong totals on the import screen.
+- 1.14.2: Changed the notifications page to load faster.
+- 1.14.1: Added a filter to the settings list.
+- 1.14.0: Fixed a crash when opening the login page.
+- 1.13.5: Fixed a typo in the sync help text.
+- 1.13.4: Added keyboard shortcuts to export.
+- 1.13.3: Fixed wrong totals on the dashboard screen.
+- 1.13.2: Changed the billing page to load faster.
+- 1.13.1: Added a filter to the profile list.
+- 1.13.0: Fixed a crash when opening the reports page.
+- 1.12.5: Fixed a typo in the search help text.
+- 1.12.4: Added keyboard shortcuts to upload.
+- 1.12.3: Fixed wrong totals on the import screen.
+- 1.12.2: Changed the notifications page to load faster.
+- 1.12.1: Added a filter to the settings list.
+- 1.12.0: Fixed a crash when opening the login page.
+- 1.11.5: Fixed a typo in the sync help text.
+- 1.11.4: Added keyboard shortcuts to export.
+- 1.11.3: Fixed wrong totals on the dashboard screen.
+- 1.11.2: Changed the billing page to load faster.
+- 1.11.1: Added a filter to the profile list.
+- 1.11.0: Fixed a crash when opening the reports page.
+- 1.10.5: Fixed a typo in the search help text.
+- 1.10.4: Added keyboard shortcuts to upload.
+- 1.10.3: Fixed wrong totals on the import screen.
+- 1.10.2: Changed the notifications page to load faster.
+- 1.10.1: Added a filter to the settings list.
+- 1.10.0: Fixed a crash when opening the login page.
+- 1.9.5: Fixed a typo in the sync help text.
+- 1.9.4: Added keyboard shortcuts to export.
+- 1.9.3: Fixed wrong totals on the dashboard screen.
+- 1.9.2: Changed the billing page to load faster.
+- 1.9.1: Added a filter to the profile list.
+- 1.9.0: Fixed a crash when opening the reports page.
+- 1.8.5: Fixed a typo in the search help text.
+- 1.8.4: Added keyboard shortcuts to upload.
+- 1.8.3: Fixed wrong totals on the import screen.
+- 1.8.2: Changed the notifications page to load faster.
+- 1.8.1: Added a filter to the settings list.
+- 1.8.0: Fixed a crash when opening the login page.
+- 1.7.5: Fixed a typo in the sync help text.
+- 1.7.4: Added keyboard shortcuts to export.
+- 1.7.3: Fixed wrong totals on the dashboard screen.
+- 1.7.2: Changed the billing page to load faster.
+- 1.7.1: Added a filter to the profile list.
+- 1.7.0: Fixed a crash when opening the reports page.
+- 1.6.5: Fixed a typo in the search help text.
+- 1.6.4: Added keyboard shortcuts to upload.
+- 1.6.3: Fixed wrong totals on the import screen.
+- 1.6.2: Changed the notifications page to load faster.
+- 1.6.1: Added a filter to the settings list.
+- 1.6.0: Fixed a crash when opening the login page.
+- 1.5.5: Fixed a typo in the sync help text.
+- 1.5.4: Added keyboard shortcuts to export.
+- 1.5.3: Fixed wrong totals on the dashboard screen.
+- 1.5.2: Changed the billing page to load faster.
+- 1.5.1: Added a filter to the profile list.
+- 1.5.0: Fixed a crash when opening the reports page.
+- 1.4.5: Fixed a typo in the search help text.
+- 1.4.4: Added keyboard shortcuts to upload.
+- 1.4.3: Fixed wrong totals on the import screen.
+- 1.4.2: Changed the notifications page to load faster.
+- 1.4.1: Added a filter to the settings list.
+- 1.4.0: Fixed a crash when opening the login page.
+- 1.3.5: Fixed a typo in the sync help text.
+- 1.3.4: Added keyboard shortcuts to export.
+- 1.3.3: Fixed wrong totals on the dashboard screen.
+- 1.3.2: Changed the billing page to load faster.
+- 1.3.1: Added a filter to the profile list.
+- 1.3.0: Fixed a crash when opening the reports page.
+- 1.2.5: Fixed a typo in the search help text.
+- 1.2.4: Added keyboard shortcuts to upload.
+- 1.2.3: Fixed wrong totals on the import screen.
+- 1.2.2: Changed the notifications page to load faster.
+- 1.2.1: Added a filter to the settings list.
+- 1.2.0: Fixed a crash when opening the login page.
+- 1.1.5: Fixed a typo in the sync help text.
+- 1.1.4: Added keyboard shortcuts to export.
+- 1.1.3: Fixed wrong totals on the dashboard screen.
+- 1.1.2: Changed the billing page to load faster.
+- 1.1.1: Added a filter to the profile list.
+- 1.1.0: Fixed a crash when opening the reports page.
+- 1.0.5: Fixed a typo in the search help text.
+- 1.0.4: Added keyboard shortcuts to upload.
+- 1.0.3: Fixed wrong totals on the import screen.
+- 1.0.2: Changed the notifications page to load faster.
+- 1.0.1: Added a filter to the settings list.
+- 1.0.0: Fixed a crash when opening the login page.

@@ -1,9 +1,9 @@
 ---
 name: expert-panel
-description: Use when the user asks to apply an expert panel, three-expert panel, sceptical panel, or panel review to a problem, design, plan, or decision. Also use when the user says to challenge, interrogate, stress-test, or pressure-test a proposal with domain experts.
+description: Use when the user asks to apply an expert panel, three-expert panel, sceptical panel, or panel review to a problem, design, plan, or decision. Also use when the user says to challenge, interrogate, stress-test, or pressure-test a proposal with domain experts. Also use when the user asks to review an agent skill ("review this skill", "skill review", "panel review of a skill", "critique this SKILL.md", "is this skill any good"), or passes `--skill-review`.
 license: MIT
 metadata:
-  version: "1.0.2"
+  version: "1.1.0"
 ---
 
 # Expert Panel
@@ -13,6 +13,12 @@ Subject a proposal to structured adversarial review by four domain experts. Prod
 ## Core Principle
 
 The goal is not consensus. The goal is to surface failure modes the proposal's author cannot see. An unresolved objection at the end is a valuable output, not a failure of the panel. A verdict of "this cannot be salvaged in its current form" must be reachable.
+
+## Skill review mode
+
+If the request is a review of an agent skill, or `--skill-review <path>` is set, read `references/skill-review.md` and follow it.
+Skip Stages 1 and 2 below. The mode is unrelated to the SKILL workflow.
+Otherwise ignore this section.
 
 ## Stage 1 — Profile and Route
 
