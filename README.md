@@ -93,14 +93,13 @@ The dossier explicitly excludes: per-expert approval verdicts, satisfaction tick
 ## What's Inside
 
 ```
-SKILL.md                        # Root skill definition (loaded by Claude Code)
 skills/
   expert-panel/
     SKILL.md                    # Canonical skill implementation
     metadata.json               # Version, category, abstract
 ```
 
-The root `SKILL.md` and `skills/expert-panel/SKILL.md` are identical — the root copy is the entry point Claude Code reads; the `skills/` copy follows the standard skill-repo layout.
+The skill lives only in `skills/expert-panel/SKILL.md`.
 
 ---
 

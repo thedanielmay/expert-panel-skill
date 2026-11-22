@@ -3,7 +3,7 @@ name: expert-panel
 description: Use when the user asks to apply an expert panel, three-expert panel, sceptical panel, or panel review to a problem, design, plan, or decision. Also use when the user says to challenge, interrogate, stress-test, or pressure-test a proposal with domain experts.
 license: MIT
 metadata:
-  version: "1.0.1"
+  version: "1.0.2"
 ---
 
 # Expert Panel

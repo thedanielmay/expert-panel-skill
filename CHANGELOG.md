@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.2 - 2026-11-22
+
+- Removed the duplicate root SKILL.md. The skill now lives only in skills/expert-panel/SKILL.md.
+
 ## 1.0.1 - 2026-11-22
 
 - Added the marketplace files: marketplace.json, LICENSE and CHANGELOG.md.
