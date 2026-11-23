@@ -1,5 +1,23 @@
 # Changelog
 
+## 1.2.0 - 2026-11-23
+
+- Added a claim check to both main workflows (issue #10).
+  - The orchestrator checks each must-fix against the proposal or the cited file before the dossier.
+  - A contradicted claim is dropped. An unverifiable claim is marked "unchecked".
+  - Agreement between critics is a reason to check, not proof.
+- Replaced the locked-score rule and the separate downgrade rule with one severity rule (issue #10).
+  - A severity can rise freely.
+  - A severity can drop only with named evidence written next to the score.
+- Relabelled the SKILL workflow as sequential role-play (issue #11).
+  - It runs in one shared context and is not independent.
+  - Real independence needs the AGENT workflow and separate subagents.
+- Added severity scores, a rewrite step and a final pass to the AGENT workflow (issue #11).
+  - Each charter now requires a 1 to 5 severity score.
+  - Each critic now answers: "Does the rewrite fix my objection, or only reframe it?"
+  - Every dossier section now has a named input from both workflows.
+- Left the skill review mode unchanged.
+
 ## 1.1.3 - 2026-11-23
 
 - `claims.py` also resolves a bare file name under `skills/*/`, and reports ambiguous matches. Real must-fix citations in a plugin layout now quote the cited line.
