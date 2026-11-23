@@ -61,8 +61,16 @@ def quote(repo, loc):
     if loc == "-":
         return "(no line cited: the claim is about something absent)"
     name, n = loc.rsplit(":", 1)
+    path = repo / name
+    if not path.is_file():
+        candidates = sorted((d / name).relative_to(repo).as_posix()
+                            for d in (repo / "skills").glob("*") if d.is_dir() and (d / name).is_file())
+        if len(candidates) > 1:
+            return f"unresolvable: ambiguous ({', '.join(candidates)})"
+        if candidates:
+            path = repo / candidates[0]
     try:
-        lines = (repo / name).read_text().splitlines()
+        lines = path.read_text().splitlines()
         return lines[int(n) - 1].strip() if int(n) >= 1 else "unresolvable"
     except (OSError, IndexError):
         return "unresolvable: file or line does not exist"

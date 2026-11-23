@@ -159,6 +159,48 @@ class TestDossier(Base):
         self.assertIn("sed -n 2p SKILL.md", text)
 
 
+class TestPluginLayout(Base):
+    """A plugin repo keeps SKILL.md under skills/<name>/, not at the repo root."""
+    def setUp(self):
+        super().setUp()
+        (self.repo / "SKILL.md").unlink()
+        foo = self.repo / "skills" / "foo"
+        foo.mkdir(parents=True)
+        (foo / "SKILL.md").write_text("line one\nrun the foo command\nthird line\n")
+        for f in self.work.glob("critic-*.md"):
+            f.unlink()
+
+    def listed(self, loc):
+        (self.work / "critic-field.md").write_text(f"```claims\n5 | {loc} | a plugin layout claim\n```\n")
+        self.extract()
+        return run(self.work, self.repo, "list").stdout
+
+    def test_bare_name_resolves_under_the_single_skill(self):
+        out = self.listed("SKILL.md:2")
+        self.assertIn("run the foo command", out)
+        self.assertNotIn("unresolvable", out)
+
+    def test_bare_name_in_two_skills_is_ambiguous(self):
+        bar = self.repo / "skills" / "bar"
+        bar.mkdir(parents=True)
+        (bar / "SKILL.md").write_text("line one\nrun the bar command\nthird line\n")
+        out = self.listed("SKILL.md:2")
+        self.assertIn("unresolvable: ambiguous", out)
+        self.assertIn("skills/bar/SKILL.md", out)
+        self.assertIn("skills/foo/SKILL.md", out)
+
+    def test_bare_name_in_no_skill_stays_unresolvable(self):
+        out = self.listed("missing.md:2")
+        self.assertIn("unresolvable", out)
+        self.assertNotIn("ambiguous", out)
+
+    def test_root_path_still_wins_over_skills_copy(self):
+        (self.repo / "SKILL.md").write_text("line one\nrun the root command\nthird line\n")
+        out = self.listed("SKILL.md:2")
+        self.assertIn("run the root command", out)
+        self.assertNotIn("run the foo command", out)
+
+
 class TestNoLeaks(unittest.TestCase):
     """The skill ships to a marketplace: no owner names, home paths or emails in new files."""
     def test_new_files_are_clean(self):

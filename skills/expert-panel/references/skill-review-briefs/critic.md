@@ -50,7 +50,7 @@ End the file with a fenced block whose first line is three backticks and the wor
 
     severity | file:line | one-sentence claim
 
-Use `-` in place of `file:line` when the finding is about something absent. The file name in `file:line` is relative to the repo root, for example `SKILL.md:40`. The block is parsed by a script. A malformed line stops the review.
+Use `-` in place of `file:line` when the finding is about something absent. Write the path exactly as `git ls-files` prints it, for example `skills/<name>/SKILL.md:40`, not a bare file name such as `SKILL.md:40`. The block is parsed by a script. A malformed line stops the review.
 
 No em or en dashes. Reply with only the output path and your top severity score.
 
