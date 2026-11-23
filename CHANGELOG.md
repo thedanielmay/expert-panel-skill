@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.1.3 - 2026-11-23
+
+- `claims.py` also resolves a bare file name under `skills/*/`, and reports ambiguous matches. Real must-fix citations in a plugin layout now quote the cited line.
+- Critics now cite paths exactly as `git ls-files` prints them, for example `skills/<name>/SKILL.md:40`.
+
 ## 1.1.2 - 2026-11-23
 
 - Adds the marketplace icon approved by Daniel (thedanielmay/agent-tools#2).
