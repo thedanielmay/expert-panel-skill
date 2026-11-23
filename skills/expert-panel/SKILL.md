@@ -3,7 +3,7 @@ name: expert-panel
 description: Use when the user asks to apply an expert panel, three-expert panel, sceptical panel, or panel review to a problem, design, plan, or decision. Also use when the user says to challenge, interrogate, stress-test, or pressure-test a proposal with domain experts. Also use when the user asks to review an agent skill ("review this skill", "skill review", "panel review of a skill", "critique this SKILL.md", "is this skill any good"), or passes `--skill-review`.
 license: MIT
 metadata:
-  version: "1.1.3"
+  version: "1.2.0"
 ---
 
 # Expert Panel
@@ -17,7 +17,7 @@ The goal is not consensus. The goal is to surface failure modes the proposal's a
 ## Skill review mode
 
 If the request is a review of an agent skill, or `--skill-review <path>` is set, read `references/skill-review.md` and follow it.
-Skip Stages 1 and 2 below. The mode is unrelated to the SKILL workflow.
+Skip Stages 1 and 2 below. The mode is unrelated to the SKILL workflow. It has its own claim verification in stage 4. Do not use the main-mode claim check below.
 Otherwise ignore this section.
 
 ## Stage 1 — Profile and Route
@@ -62,19 +62,31 @@ Do not select four engineers for an engineering proposal. Credentialed-same-doma
 
 State the panel — name, role, adversarial axis, what they will specifically attack — and proceed. No confirmation gate. The user can interrupt if they want different experts.
 
+## Severity rule
+
+Use this rule in both workflows and in the dossier.
+
+- A severity can rise freely at any stage. Raise it when new evidence makes the failure more likely or more serious.
+- A severity can drop only with named evidence: what was checked and what it showed. Write that evidence next to the score.
+- A score with no named evidence beside it does not drop. Tone and politeness are not evidence.
+
 ## SKILL Workflow — 3 fixed rounds, no loop
 
 Use when routing decision selects SKILL.
 
-### Round 1 — Independent Critique (strict isolation)
+### Round 1: Sequential role-play (not independent)
 
-Each expert critiques in sequence, in their own voice. **Strict constraint:** Expert 2 must not reference Expert 1's points. Expert 3 must not reference Experts 1 or 2. Expert 4 must not reference any prior expert. Each must re-derive their objections independently, as if they have not heard the others.
+Experts critique in sequence, in their own voice, in one shared context. The orchestrator plays each role in turn. Later roles see earlier critiques in the context, even when told not to use them. This is not independent review. Real independence needs the AGENT workflow, where each critic runs as a separate subagent with no shared context.
+
+Give each role this instruction before it speaks: do not reference earlier experts' points. Re-derive the objection from the proposal itself. Treat this as a role-play instruction, not a guarantee of independence.
 
 Frame each expert's turn explicitly:
 
-> "Expert 2 speaks now, without reference to Expert 1's critique. Independent derivation only."
+> "Expert 2 speaks now. Do not reference Expert 1's critique. Re-derive the objection from the proposal."
 
-**Pre-commit severity.** Before the proposal author defends, each expert rates their top objection on a 1–5 severity scale. Write the scores down. These are **locked** — they cannot be retroactively softened in later rounds. They can only be maintained or escalated.
+The beneficiary-of-failure expert also states the strongest case for not doing the proposal. That critique is the input for the steel-man alternative.
+
+**Pre-commit severity.** Before the proposal author defends, each expert rates their top objection on a 1 to 5 severity scale. Write the scores down. Apply the Severity rule to every later change.
 
 ### Round 2 — Cross-Challenge
 
@@ -82,16 +94,16 @@ Experts now see each other's critiques. Each expert must do all three:
 
 1. Identify one point from another expert they **agree with**, and state why it changes their view.
 2. Identify one point from another expert they **disagree with**. (Cross-panel tension is mandatory, not optional. If every expert agrees with every other expert, the panel has collapsed — re-run Round 1 with sharper adversarial axes.)
-3. Maintain or escalate their pre-committed severity score. Downgrading requires explicit, named justification ("Expert 3's point about X actually resolves my Y concern because Z") — never a softening on tone alone.
+3. Keep or raise the severity score. To lower it, apply the Severity rule and write the named evidence next to the score.
 
 ### Round 3 — Post-Rewrite Stress Test
 
 The proposal author (Claude) now does structured self-attack:
 
-1. List the **three weaknesses with the highest pre-committed severity scores**.
+1. List the **three weaknesses with the highest current severity scores**.
 2. For each, state the specific failure scenario in concrete terms: "this fails when X happens because Y."
 3. Rewrite the proposal to fix those weaknesses.
-4. Each expert does one final pass on the rewrite, answering one question: **"Does the rewrite address my pre-committed objection, or does it just reframe it?"**
+4. Each expert does one final pass on the rewrite, answering one question: **"Does the rewrite fix my objection, or only reframe it?"** Record the answer verbatim. Any "only reframe it" answer goes into Unresolved objections.
 
 Experts are permitted — and encouraged — to end Round 3 with an unresolved objection. That is a valid and high-value output.
 
@@ -109,7 +121,10 @@ The orchestrator (Claude) writes 4 expert charters. Each charter contains:
 - The expert's adversarial axis (from Stage 2)
 - A specific critique brief ("attack this from the perspective of …")
 - A 300-word cap on the critique
+- A 1 to 5 severity score for the top objection, with one line naming the evidence behind it
 - The explicit instruction: **"You have not seen any other expert's critique. Derive your objections independently."**
+
+Make one of the four charters the case against. It argues the strongest case for not doing the proposal. That critique is the input for the steel-man alternative.
 
 ### Step 2 — Dispatch in parallel
 
@@ -119,7 +134,7 @@ Launch all 4 subagents in a single tool block, in parallel. Each runs independen
 
 Collect the 4 critiques. Identify:
 
-- **Cross-cutting concerns** — where experts independently landed on the same issue. This is high-signal. The objection is structural to the proposal, not stylistic.
+- **Cross-cutting concerns**: where experts landed on the same issue. Agreement is a reason to check the claim, not proof. Apply the claim check before the dossier.
 - **Divergences** — where experts attacked different parts of the proposal or reached opposite conclusions. Surface these as cross-panel tensions; do not resolve them prematurely.
 
 ### Step 4 (optional, --deep only) — Second-pass dispatch
@@ -131,9 +146,41 @@ Each subagent now sees the other three critiques. Each answers:
 
 Dispatch in parallel again. Collect. Re-surface tensions.
 
-### Step 5 — Orchestrator synthesises
+### Step 5: Rewrite and final pass
+
+1. The orchestrator rewrites the proposal to fix the objections with the highest severity scores.
+2. Send each critic the rewrite and their own original critique. Dispatch in parallel again.
+3. Each critic answers one question: **"Does the rewrite fix my objection, or only reframe it?"** State the severity score after the rewrite. Apply the Severity rule to any change.
+4. Record each answer verbatim. Any "only reframe it" answer goes into Unresolved objections.
+
+### Step 6: Orchestrator synthesises
 
 Move to the Decision Dossier output.
+
+## Claim check before the dossier
+
+Use this in both workflows. Check each must-fix (severity 4 or 5) before it enters the dossier. Check the factual claim against the proposal text or the cited file.
+
+- Agreement between critics is a reason to check, not proof. Two critics can repeat the same wrong claim.
+- Check a claim about a number, a command or a count by running the command or opening the cited file. Do not ask the critic to reread it. Every figure comes with the command that produced it.
+- Record one result for each must-fix:
+  - **Held**: the evidence confirms the claim. Write what was checked and what it showed next to the score.
+  - **Dropped**: the evidence contradicts the claim. Remove it from Must-fix and Should-fix. Keep one line under Dropped claims with the reason.
+  - **Unchecked**: the evidence cannot be reached. Keep the claim in its severity section. Mark it "unchecked" next to the score. Say what was not reachable. Do not present it as verified.
+- The named evidence written for a drop is also the evidence required by the Severity rule.
+
+## Dossier inputs
+
+Both workflows produce an input for every dossier section.
+
+| Dossier section | SKILL workflow | AGENT workflow |
+|---|---|---|
+| Must-fix | Round 1 scores, Round 2 changes, claim check | Charter scores, Step 5 changes, claim check |
+| Should-fix | Round 1 scores, Round 2 changes, claim check | Charter scores, Step 5 changes, claim check |
+| Unresolved objections | Round 3 final-pass answers | Step 5 final-pass answers |
+| Cross-panel tensions | Round 2 disagreements | Step 3 divergences, Step 4 second pass (with `--deep`) |
+| Steel-man alternative | Round 1 case-against critique | Case-against charter, Step 5 final pass |
+| Dropped claims | Claim check | Claim check |
 
 ## Output Format — Decision Dossier
 
@@ -159,6 +206,10 @@ Where experts disagreed with each other. State both positions and what the disag
 
 The strongest case for **not doing this proposal**, or doing the opposite. Argued as if by a competent advocate, not strawmanned. One paragraph minimum.
 
+### Dropped claims
+
+One line per dropped must-fix, with the reason and the evidence that contradicted it. Unchecked claims stay in their severity section with the "unchecked" label.
+
 ### Do not include
 
 - Per-expert approval verdicts ("Karan: approved")
@@ -175,7 +226,7 @@ These are performance metrics for theatre, not adversarial review.
 - **Sceptical by default** — every claim is suspect until evidenced
 - **Relentless** — they do not stop at "good enough"
 - **Specific** — challenges cite exact scenarios, thresholds, conditions, line numbers, edge cases. Never vague.
-- **Independent in Round 1** — no reference to other experts' points until Round 2
+- **Sequential in Round 1** (not independent): experts speak in turn in one shared context and set aside earlier critiques until Round 2
 - **Permitted to conclude the proposal cannot be salvaged in its current form** — this verdict must be reachable and stated plainly when warranted
 
 ### Experts MUST NOT be
