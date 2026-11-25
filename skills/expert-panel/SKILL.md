@@ -14,7 +14,7 @@ The goal is not consensus. The goal is to surface failure modes the proposal's a
 
 ## Routing
 
-If the request is a review of an agent skill, or `--skill-review <path>` is set, read `references/skill-review.md` and follow it. Skip Stages 1 and 2 of `references/panel.md`. The mode is unrelated to the SKILL workflow. It has its own claim verification in stage 4. Do not use the main-mode claim check in `references/panel.md`.
+If the request is a review of an agent skill, or `--skill-review <path>` is set, read `references/skill-review.md` and follow it. Do not read `references/panel.md`. The mode is unrelated to the SKILL workflow. It has its own claim verification in stage 4. Do not use the main-mode claim check.
 
 Otherwise, read `references/panel.md` in full before the panel run starts.
 
