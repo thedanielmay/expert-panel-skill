@@ -100,7 +100,6 @@ Never include per-critic approval, agreement counts or consensus language. Never
 Rules for this stage:
 - Keep unresolved objections verbatim, in the critic's own words.
 - Argue the strongest case against the skill as a competent advocate would, in one paragraph or more.
-- The confidence of the skill's author is not evidence. Critics are relentless and do not stop at "good enough".
 
 ### Stage 6: Filing (only when asked)
 

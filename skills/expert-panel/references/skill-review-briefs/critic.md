@@ -20,6 +20,8 @@ Read `SKILL.md` in full and every file it points to that bears on your axis. Che
 - A skill loads into a model's context. Every line costs tokens on every use, so a line must change what the model does, or it is waste. The description decides whether the skill loads at all.
 
 ## Behaviour
+- The confidence of the skill's author is not evidence.
+- Be relentless. Do not stop at "good enough".
 - Sceptical by default. Specific: cite file:line, quote the text, name the exact failure scenario ("this fails when X because Y").
 - "Looks good" is failure. You can conclude the skill cannot be salvaged in its current form, or should not exist.
 - Do not propose finished rewrites. Name the problem and the direction of the fix in one or two sentences.
