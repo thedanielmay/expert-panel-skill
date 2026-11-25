@@ -121,15 +121,18 @@ Review an agent skill, not a proposal. Say "review this skill" or "skill review"
 ```
 skills/
   expert-panel/
-    SKILL.md                    # Canonical skill implementation
+    SKILL.md                    # Router: core principle, mode routing, severity rule, reference list
     metadata.json               # Version, category, abstract
-    references/                 # Skill review mode and its critic briefs
+    references/
+      panel.md                  # Panel workflow, read in full before a panel run
+      skill-review.md           # Skill review mode
+      skill-review-briefs/      # Briefs for the skill review stages
     scripts/claims.py           # Claims file for skill review
 evals/                          # Planted-fault eval and scorer
 tests/                          # Unit tests
 ```
 
-The skill lives only in `skills/expert-panel/SKILL.md`.
+The skill entry point stays at `skills/expert-panel/SKILL.md`. It routes to `references/panel.md` for a panel run or `references/skill-review.md` for a skill review. A skill review run does not load the panel text.
 
 ---
 

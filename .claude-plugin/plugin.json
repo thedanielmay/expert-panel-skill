@@ -1,6 +1,6 @@
 {
   "name": "expert-panel",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "description": "Adversarial expert panel review: profiles the proposal, routes to skill or agent workflow, runs 4 experts in sequential role-play or parallel subagents across adversarial axes, and produces a decision dossier with must-fix, should-fix, unresolved objections, cross-panel tensions, and a steel-manned alternative.",
   "author": {
     "name": "Daniel May",
