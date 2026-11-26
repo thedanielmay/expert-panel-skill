@@ -1,6 +1,6 @@
 # Skill review mode
 
-Use this mode to review one agent skill. It does not use the SKILL workflow (the sequential rounds in SKILL.md). Skip Stage 1 and Stage 2 of SKILL.md. The critics are always parallel subagents.
+Use this mode to review one agent skill. It does not use the SKILL workflow (the sequential rounds in `references/panel.md`). Do not read `references/panel.md`. The critics are always parallel subagents.
 
 ## Invoke
 
@@ -95,7 +95,11 @@ Write `dossier.md` with these sections, in this order. Take must-fix items from 
 8. Field knowledge used: each outside skill with URL, version and why it passed. Tag the findings that rest on it.
 9. Dropped claims: one line each with the reason. This is the evidence the check ran.
 
-Never include per-critic approval, agreement counts or consensus language.
+Never include per-critic approval, agreement counts or consensus language. Never include satisfaction tickboxes or counts of issues raised against issues resolved.
+
+Rules for this stage:
+- Keep unresolved objections verbatim, in the critic's own words.
+- Argue the strongest case against the skill as a competent advocate would, in one paragraph or more.
 
 ### Stage 6: Filing (only when asked)
 

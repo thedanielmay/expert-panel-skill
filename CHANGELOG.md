@@ -1,5 +1,16 @@
 # Changelog
 
+## 1.3.0 - 2026-11-26
+
+- Split the skill into a router and a panel reference.
+  - `SKILL.md` now holds the frontmatter, core principle, mode routing, severity rule and reference list.
+  - A panel run reads `references/panel.md` in full before it starts.
+  - A skill review run reads `references/skill-review.md`. It does not load the panel text.
+- Moved the panel workflow to `references/panel.md` word for word.
+  - Stages 1 and 2, both workflows, the claim check, the dossier inputs, the output format and the expert behaviour rules moved.
+  - The four panel flags now sit in the routing section of `SKILL.md`.
+- Updated `README.md` for the new file layout.
+
 ## 1.2.0 - 2026-11-23
 
 - Added a claim check to both main workflows (issue #10).
